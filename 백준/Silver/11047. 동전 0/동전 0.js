@@ -11,14 +11,12 @@ for (let i = 1; i <= n; i++) {
 
 // K원을 만드는데 필요한 동전 개수 구하기
 let count = 0
-while (k >= money[0]) {
-  for (let i = money.length - 1; i >= 0 ;i--) {
-    if (k >= money[i]) {
-      count += parseInt(k / money[i])
-      k = parseInt(k % money[i])      
-      break
-    }    
-  }
+for (let i = money.length - 1; i >= 0 ;i--) {
+  if (k >= money[i]) {
+    count += parseInt(k / money[i])
+    k = parseInt(k % money[i])      
+  }    
 }
+
 
 console.log(count)
