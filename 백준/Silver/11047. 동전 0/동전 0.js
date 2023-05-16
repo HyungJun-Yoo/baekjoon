@@ -14,10 +14,10 @@ let count = 0
 while (k >= money[0]) {
   for (let i = money.length - 1; i >= 0 ;i--) {
     if (k >= money[i]) {
-      k -= money[i]
-      count++
+      count += parseInt(k / money[i])
+      k = parseInt(k % money[i])      
       break
-    }
+    }    
   }
 }
 
