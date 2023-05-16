@@ -1,30 +1,28 @@
 const fs = require('fs')
 const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n')
 
-let answer = []
-for (let i = 1; i < input.length; i++) {
-  if (input[i].split(' ').length !== 1) continue
-  let testCase = Number(input[i])
-  let arr = input.slice(i + 1, testCase + i + 1).map((item) => item.split(' ').map(Number))
-  answer.push(Condition(arr))
-}
+let testCase = Number(input[0])
+let line = 1
+for (let tc = 0; tc < testCase; tc++) {
+  n = Number(input[line])
+  let arr = []
 
-let str = ''
-answer.forEach((item) => str += `${item}\n`)
-console.log(str)
+  for (let i = line + 1; i <= line + n; i++) {
+    let data = input[i].split(' ').map(Number)
+    arr.push(data)
+  }
 
-function Condition(arr) {  
-  let result = arr.length
-  arr.sort((a, b) => a[0] - b[0])
+  arr.sort((x, y) => x[0] - y[0])
+  let count = 0
+  let minValue = 100001
 
-  let y = arr[0][1]
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i][1] > y) {
-      result--
-    } else {
-      y = arr[i][1]
+  for (let [x, y] of arr) {
+    if (y < minValue) {
+      minValue = y
+      count += 1
     }
   }
 
-  return result
+  console.log(count)
+  line += n + 1
 }
