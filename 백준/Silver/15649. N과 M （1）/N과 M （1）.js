@@ -13,8 +13,8 @@ function possible(num) {
 }
 
 let result = ''
-function dfs(num) {
-  if (num > m) {
+function dfs(depth) {
+  if (depth > m) {
     result += `${arr.join(' ')} \n`
     return
   }
@@ -22,7 +22,7 @@ function dfs(num) {
   for (let i = 1; i <= n; i++) {
     if (!possible(i)) continue
     arr.push(i)
-    dfs(num + 1)
+    dfs(depth + 1)
     arr.pop()
   }
 }
